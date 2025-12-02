@@ -14,6 +14,8 @@ const RecipeContext = createContext<RecipeContextType | null>(null);
 
 export function RecipeProvider({ children }: { children: React.ReactNode }) {
   const [recipes, setRecipes] = useState<Recipe[]>(INITIAL_RECIPES);
+  // Track whether recipes were loaded from storage to avoid overwriting on first render
+  const recipesLoaded = useRef(false);
   
   // FIX 1: Start with an empty Set to match the Server's output exactly
   const [likedRecipes, setLikedRecipes] = useState<Set<string>>(new Set());
@@ -31,12 +33,38 @@ export function RecipeProvider({ children }: { children: React.ReactNode }) {
     isLoaded.current = true; // Mark as loaded so we can start saving changes
   }, []);
 
+  // Load recipes from localStorage on mount (if present)
+  useEffect(() => {
+    const saved = localStorage.getItem('freshBitesRecipes');
+    if (saved) {
+      try {
+        const parsed: Recipe[] = JSON.parse(saved);
+        setRecipes(parsed);
+      } catch (e) {
+        console.error('Failed to parse saved recipes:', e);
+        setRecipes(INITIAL_RECIPES);
+      }
+    }
+    recipesLoaded.current = true;
+  }, []);
+
   // Effect: Save likes to localStorage (Only if we have finished loading!)
   useEffect(() => {
     if (isLoaded.current) {
       localStorage.setItem('likedRecipes', JSON.stringify([...likedRecipes]));
     }
   }, [likedRecipes]);
+
+  // Persist recipes to localStorage whenever they change (after initial load)
+  useEffect(() => {
+    if (recipesLoaded.current) {
+      try {
+        localStorage.setItem('freshBitesRecipes', JSON.stringify(recipes));
+      } catch (e) {
+        console.error('Failed to save recipes to localStorage:', e);
+      }
+    }
+  }, [recipes]);
 
   // Action: Toggle Like
   const toggleLike = (recipeId: string) => {
@@ -57,7 +85,7 @@ export function RecipeProvider({ children }: { children: React.ReactNode }) {
       ...newRecipe,
       id: Date.now().toString()
     };
-    setRecipes([recipe, ...recipes]);
+    setRecipes(prev => [recipe, ...prev]);
   };
 
   return (
