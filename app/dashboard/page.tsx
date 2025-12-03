@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from 'react';
-import { Plus, Search, Clock, Users, Heart, Grid3x3, List, MoreVertical } from 'lucide-react';
+import { Plus, Search, Clock, Users, Heart, Sparkles, Grid3x3, List, MoreVertical, ChevronDown, Leaf, Star, MessageCircle, Github, Twitter, Instagram, Send, User } from 'lucide-react';
 import Link from 'next/link';
 import { useRecipes } from '@/app/context/RecipeContext';
 import { AddRecipeModal } from '@/components/AddRecipeModal';
@@ -53,7 +53,7 @@ export default function DashboardPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-emerald-50/30 dark:from-slate-950 dark:via-slate-950 dark:to-slate-900 transition-colors">
-      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-8 md:py-12">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-10 md:py-20">
         
         {/* --- HEADER SECTION --- */}
         {/* FIXED: Added 'md:flex-row' to make it horizontal on desktop */}
@@ -279,6 +279,65 @@ export default function DashboardPage() {
           </>
         )}
       </div>
+            {/* --- FOOTER SECTION --- */}
+      <footer className="bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 pt-16 md:pt-20 pb-10 transition-colors">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+          <div className="grid md:grid-cols-4 gap-8 md:gap-12 mb-16">
+            <div className="col-span-1 md:col-span-2">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center">
+                  <Leaf className="w-5 h-5 text-white" />
+                </div>
+                <span className="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">FreshBites</span>
+              </div>
+              <p className="text-slate-600 dark:text-slate-400 mb-8 max-w-sm leading-relaxed text-sm">
+                Celebrating the art of Korean cooking. We bring authentic flavors and modern techniques to your kitchen.
+              </p>
+              <div className="flex gap-4">
+                <a href="#" className="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-900 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-emerald-500 hover:text-white transition-all">
+                  <Twitter className="w-5 h-5" />
+                </a>
+                <a href="#" className="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-900 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-emerald-500 hover:text-white transition-all">
+                  <Instagram className="w-5 h-5" />
+                </a>
+                <a href="#" className="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-900 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-emerald-500 hover:text-white transition-all">
+                  <Github className="w-5 h-5" />
+                </a>
+              </div>
+            </div>
+            
+            <div className="grid grid-cols-2 gap-8 md:col-span-2">
+              <div>
+                <h3 className="font-bold text-slate-900 dark:text-white mb-6">Discover</h3>
+                <ul className="space-y-4 text-sm">
+                  <li><a href="#" className="text-slate-600 dark:text-slate-400 hover:text-emerald-500 transition-colors">All Recipes</a></li>
+                  <li><a href="#" className="text-slate-600 dark:text-slate-400 hover:text-emerald-500 transition-colors">Popular</a></li>
+                  <li><a href="#" className="text-slate-600 dark:text-slate-400 hover:text-emerald-500 transition-colors">Video Tutorials</a></li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="font-bold text-slate-900 dark:text-white mb-6">Company</h3>
+                <ul className="space-y-4 text-sm">
+                  <li><Link href="/about" className="text-slate-600 dark:text-slate-400 hover:text-emerald-500 transition-colors">About Us</Link></li>
+                  <li><a href="#" className="text-slate-600 dark:text-slate-400 hover:text-emerald-500 transition-colors">Contact</a></li>
+                  <li><a href="#" className="text-slate-600 dark:text-slate-400 hover:text-emerald-500 transition-colors">Privacy Policy</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div className="pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-slate-500 text-sm text-center md:text-left">
+              &copy; 2025 FreshBites. Made with ❤️ in Korea.
+            </p>
+            <div className="flex gap-6 text-sm text-slate-500">
+              <a href="#" className="hover:text-emerald-500">Terms</a>
+              <a href="#" className="hover:text-emerald-500">Privacy</a>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
