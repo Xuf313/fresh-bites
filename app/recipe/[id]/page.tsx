@@ -162,7 +162,7 @@ export default function RecipeDetailPage() {
                       type="checkbox" 
                       className="mt-1 w-4 h-4 md:w-5 md:h-5 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500 shrink-0 cursor-pointer"
                     />
-                    <span className="flex-1 group-hover:text-slate-900 dark:group-hover:text-white transition-colors leading-relaxed font-medium text-sm md:text-base">
+                    <span className="flex-1 group-hover:text-slate-900 dark:group-hover:text-black transition-colors leading-relaxed font-medium text-sm md:text-base">
                       {ingredient}
                     </span>
                   </li>
