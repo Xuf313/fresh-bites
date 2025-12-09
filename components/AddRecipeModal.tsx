@@ -68,7 +68,6 @@ export function AddRecipeModal({ onClose, onAdd }: AddRecipeModalProps) {
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm overflow-y-auto">
       <div className="relative w-full max-w-2xl bg-white dark:bg-slate-900 rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
         
-        {/* Header */}
         <div className="relative bg-gradient-to-r from-emerald-600 to-teal-600 px-6 py-6 md:px-8 md:py-8 shrink-0">
           <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16"></div>
           <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/10 rounded-full -ml-16 -mb-16"></div>
@@ -87,9 +86,7 @@ export function AddRecipeModal({ onClose, onAdd }: AddRecipeModalProps) {
           </div>
         </div>
 
-        {/* Scrollable Form Content */}
         <form onSubmit={handleSubmit} className="p-6 md:p-8 overflow-y-auto">
-          {/* Basic Information */}
           <div className="mb-8">
             <h3 className="text-lg text-slate-900 dark:text-white mb-4 pb-2 border-b border-slate-200 dark:border-slate-800 font-bold">
               Basic Information
@@ -131,7 +128,6 @@ export function AddRecipeModal({ onClose, onAdd }: AddRecipeModalProps) {
             </div>
           </div>
 
-          {/* Timing */}
           <div className="mb-8">
             <h3 className="text-lg text-slate-900 dark:text-white mb-4 pb-2 border-b border-slate-200 dark:border-slate-800 font-bold">
               Timing
@@ -148,7 +144,6 @@ export function AddRecipeModal({ onClose, onAdd }: AddRecipeModalProps) {
             </div>
           </div>
 
-          {/* Description */}
           <div className="mb-8">
             <h3 className="text-lg text-slate-900 dark:text-white mb-4 pb-2 border-b border-slate-200 dark:border-slate-800 font-bold">
               Description
@@ -156,7 +151,6 @@ export function AddRecipeModal({ onClose, onAdd }: AddRecipeModalProps) {
             <textarea value={formData.description} onChange={(e) => setFormData({ ...formData, description: e.target.value })} rows={3} className={inputClass} placeholder="Brief description of the recipe..." />
           </div>
 
-          {/* Ingredients */}
           <div className="mb-8">
             <div className="flex items-center justify-between mb-4 pb-2 border-b border-slate-200 dark:border-slate-800">
               <h3 className="text-lg text-slate-900 dark:text-white font-bold">Ingredients</h3>
@@ -178,7 +172,6 @@ export function AddRecipeModal({ onClose, onAdd }: AddRecipeModalProps) {
             </div>
           </div>
 
-          {/* Instructions */}
           <div className="mb-8">
             <div className="flex items-center justify-between mb-4 pb-2 border-b border-slate-200 dark:border-slate-800">
               <h3 className="text-lg text-slate-900 dark:text-white font-bold">Instructions</h3>
@@ -201,7 +194,6 @@ export function AddRecipeModal({ onClose, onAdd }: AddRecipeModalProps) {
             </div>
           </div>
 
-          {/* Tags */}
           <div className="mb-8">
             <div className="flex items-center justify-between mb-4 pb-2 border-b border-slate-200 dark:border-slate-800">
               <h3 className="text-lg text-slate-900 dark:text-white font-bold">Tags (Optional)</h3>
