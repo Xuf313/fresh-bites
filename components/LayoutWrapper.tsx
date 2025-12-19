@@ -36,7 +36,7 @@ export function LayoutWrapper({ children }: { children: React.ReactNode }) {
   if (!mounted) {
     return (
         <div className="min-h-screen bg-slate-50 transition-colors relative">
-            <Snowfall />
+            <Snowfall/>
             <Navbar darkMode={false} toggleDarkMode={toggleDarkMode} /> 
             {children}
         </div>
