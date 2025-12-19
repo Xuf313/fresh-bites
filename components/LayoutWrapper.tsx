@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Navbar } from "@/components/Navbar";
+import { Snowfall } from "react-snowfall";
 
 export function LayoutWrapper({ children }: { children: React.ReactNode }) {
   const [darkMode, setDarkMode] = useState(false);
@@ -34,7 +35,8 @@ export function LayoutWrapper({ children }: { children: React.ReactNode }) {
 
   if (!mounted) {
     return (
-        <div className="min-h-screen bg-slate-50 transition-colors">
+        <div className="min-h-screen bg-slate-50 transition-colors relative">
+            <Snowfall />
             <Navbar darkMode={false} toggleDarkMode={toggleDarkMode} /> 
             {children}
         </div>
@@ -42,7 +44,8 @@ export function LayoutWrapper({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 transition-colors">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 transition-colors relative">
+      <Snowfall />
       <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
       {children}
     </div>
